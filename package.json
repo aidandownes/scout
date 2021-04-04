@@ -1,5 +1,5 @@
 {
-  "name": "scout",
+  "name": "html-text-scout",
   "version": "1.0.0",
   "description": "A visual web page text scrapper",
   "main": "lib/index.js",

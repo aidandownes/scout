@@ -84,7 +84,7 @@ export class Scout {
 
     for (const elm of elms) {
       const results = elm.text.split('\t').map(r => r.trim());
-      if (results.length == numberOfColumns) {
+      if (results.length === numberOfColumns) {
         elements.push({...elm, results});
       }
     }
@@ -101,24 +101,24 @@ export class Scout {
 
     if (body) {
       textContent = await body.evaluate(elm => {
-        function walk(elm: HTMLElement) {
-          if (!elm.getBoundingClientRect ||
-              typeof elm.getBoundingClientRect !== 'function') {
+        function walk(htmlElement: HTMLElement) {
+          if (!htmlElement.getBoundingClientRect ||
+              typeof htmlElement.getBoundingClientRect !== 'function') {
             return [];
           }
-          if (!elm.innerText || elm.innerText.trim() === '') {
+          if (!htmlElement.innerText || htmlElement.innerText.trim() === '') {
             return [];
           }
-          const rect = elm.getBoundingClientRect();
+          const rect = htmlElement.getBoundingClientRect();
           const data = {
-            text: elm.innerText.trim(),
+            text: htmlElement.innerText.trim(),
             boundingBox:
                 {x: rect.x, y: rect.y, width: rect.width, height: rect.height},
           };
 
-          if (elm.hasChildNodes()) {
+          if (htmlElement.hasChildNodes()) {
             const accData: TextElement[] =
-                Array.from(elm.childNodes)
+                Array.from(htmlElement.childNodes)
                     .map(child => walk(child as HTMLElement))
                     .reduce((acc, val) => acc.concat(val), []);
 
