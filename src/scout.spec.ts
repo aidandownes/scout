@@ -1,4 +1,4 @@
-import {Scout} from './scout';
+import { Scout } from './scout';
 
 describe('Scout', () => {
   let scout: Scout;
@@ -35,11 +35,9 @@ describe('Scout', () => {
 
     test('Finds text between reference two texts', () => {
       const elms = scout.between('From my room', 'The end');
-      expect(elms).toEqual(
-          ['Rise up this morning', 'Smile with the rising sun']);
+      expect(elms).toEqual(['Rise up this morning', 'Smile with the rising sun']);
     });
   });
-
 
   describe('using regex', () => {
     const textRegex = /^Hello (\w+)$/;
@@ -54,12 +52,10 @@ describe('Scout', () => {
 
     test('Finds text between reference two texts', () => {
       const elms = scout.between(/From my \w+/, /The \w+/);
-      expect(elms).toEqual(
-          ['Rise up this morning', 'Smile with the rising sun']);
+      expect(elms).toEqual(['Rise up this morning', 'Smile with the rising sun']);
     });
   });
 });
-
 
 describe('Scout with table', () => {
   let scout: Scout;
@@ -95,16 +91,17 @@ describe('Scout with table', () => {
   describe('using exact match', () => {
     test('Can get table data', () => {
       expect(scout.rowsBetween('Item', 'Total', 2)).toEqual([
-        ['Book', '$20.22'], ['Coffee', '$5.99']
+        ['Book', '$20.22'],
+        ['Coffee', '$5.99'],
       ]);
     });
   });
 
-
   describe('using regex', () => {
     test('Can get table data', () => {
       expect(scout.rowsBetween(/Item/, /Total/, 2)).toEqual([
-        ['Book', '$20.22'], ['Coffee', '$5.99']
+        ['Book', '$20.22'],
+        ['Coffee', '$5.99'],
       ]);
     });
   });

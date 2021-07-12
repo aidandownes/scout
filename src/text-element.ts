@@ -1,6 +1,6 @@
 export interface TextElement {
   text: string;
-  boundingBox: {x: number, y: number, width: number; height: number};
+  boundingBox: { x: number; y: number; width: number; height: number };
   results?: string[];
 }
 
